@@ -1,13 +1,5 @@
 # Dockerfile.maven3.9.9-eclipse-temurin17-node20
-FROM eclipse-temurin:17-jdk
-
-# Install Maven
-ENV MAVEN_VERSION=3.9.9
-RUN apt-get update && \
-    apt-get install -y wget tar && \
-    wget https://archive.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz && \
-    tar xzvf apache-maven-${MAVEN_VERSION}-bin.tar.gz -C /opt && \
-    ln -s /opt/apache-maven-${MAVEN_VERSION}/bin/mvn /usr/bin/mvn
+FROM maven:3.9.9-eclipse-temurin-17
 
 # Install Node.js
 ENV NODE_VERSION=20
@@ -18,9 +10,6 @@ RUN apt-get install -y curl && \
 # Install Yarn
 RUN npm install -g yarn
 
-# Set environment variables
-ENV MAVEN_HOME=/opt/apache-maven-${MAVEN_VERSION}
-ENV PATH=$MAVEN_HOME/bin:$PATH
 
 # Verify installations
 RUN java -version && mvn -version && node -v && npm -v && yarn -v

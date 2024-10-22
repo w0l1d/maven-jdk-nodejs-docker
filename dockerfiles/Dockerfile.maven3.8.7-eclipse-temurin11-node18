@@ -1,4 +1,4 @@
-# Dockerfile.maven3.9.9-eclipse-temurin17-node20
+# Dockerfile.maven3.8.7-eclipse-temurin11-node18
 FROM eclipse-temurin:11-jdk
 
 # Install Maven
