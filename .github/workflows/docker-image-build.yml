@@ -40,10 +40,10 @@ jobs:
             version_tag=$(basename "$dockerfile" | sed 's/Dockerfile\.//g')
           
             # Build Docker image with Maven, JDK, and Node.js versions
-            docker build -t "${DOCKER_USERNAME}/multi-version-image:${version_tag}" -f "$dockerfile" .
+            docker build -t "${DOCKER_USERNAME}/maven-jdk-node:${version_tag}" -f "$dockerfile" .
           
             # Push Docker image to DockerHub
-            docker push "${DOCKER_USERNAME}/multi-version-image:${version_tag}"
+            docker push "${DOCKER_USERNAME}/maven-jdk-node:${version_tag}"
           done
 
       # Step 5: Log out from DockerHub
