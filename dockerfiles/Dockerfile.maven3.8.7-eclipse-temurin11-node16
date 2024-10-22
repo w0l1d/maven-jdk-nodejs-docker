@@ -1,8 +1,8 @@
 # Dockerfile.maven3.9.9-eclipse-temurin17-node20
-FROM eclipse-temurin:17-jdk
+FROM eclipse-temurin:11-jdk
 
 # Install Maven
-ENV MAVEN_VERSION=3.9.9
+ENV MAVEN_VERSION=3.8.7
 RUN apt-get update && \
     apt-get install -y wget tar && \
     wget https://archive.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz && \
@@ -10,7 +10,7 @@ RUN apt-get update && \
     ln -s /opt/apache-maven-${MAVEN_VERSION}/bin/mvn /usr/bin/mvn
 
 # Install Node.js
-ENV NODE_VERSION=20
+ENV NODE_VERSION=16
 RUN apt-get install -y curl && \
     curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - && \
     apt-get install -y nodejs
