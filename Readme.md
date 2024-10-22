@@ -29,17 +29,16 @@ This project contains Dockerfiles that allow developers to easily create Docker 
 
 Each Dockerfile is tailored for a specific combination of Maven, JDK, and Node.js versions, providing flexibility to select the ideal environment for different use cases.
 
-## Available Images
 
-The following versions are supported in the provided Dockerfiles:
+## Available Dockerfile Versions
 
-- **Maven**: 3.9.9
-- **JDK**: Eclipse Temurin 17
-- **Node.js**: 20
+The following combinations are provided in this repository:
 
-### Image Variants
-
-- `maven3.9.9-eclipse-temurin17-node20` - Maven 3.9.9, JDK Eclipse Temurin 17, Node.js 20, yarn
+| Dockerfile Name | Maven Version | JDK Version | Node.js Version |
+|-----------------|---------------|-------------|-----------------|
+| `Dockerfile.maven3.8.7-eclipse-temurin11-node16` | 3.8.7 | 11 | 16 |
+| `Dockerfile.maven3.9.9-eclipse-temurin17-node20` | 3.9.9 | 17 | 20 |
+| `Dockerfile.maven3.6.3-eclipse-temurin8-node14`  | 3.6.3 | 8  | 14 |
 
 Each combination is defined in its own Dockerfile, allowing users to choose the appropriate setup for their project.
 
