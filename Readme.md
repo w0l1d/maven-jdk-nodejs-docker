@@ -24,6 +24,8 @@ This project contains Dockerfiles that allow developers to easily create Docker 
 - **Maven**: To manage project dependencies and build Java applications.
 - **JDK (Java Development Kit)**: To compile and run Java programs.
 - **Node.js**: To run JavaScript code and develop Node.js applications.
+- **NPM**: To manage Node.js dependencies.
+- **Yarn**: To manage Node.js dependencies.
 
 Each Dockerfile is tailored for a specific combination of Maven, JDK, and Node.js versions, providing flexibility to select the ideal environment for different use cases.
 
@@ -94,7 +96,7 @@ docker build -t <image-name> -f dockerfiles/Dockerfile.<version-combination> .
 For example, to build an image containing Maven 3.9.9, JDK Eclipse Temurin 17, and Node.js 20:
 
 ```bash
-docker build -t myimage:maven3.9.9-eclipse-temurin17-node20 -f dockerfiles/Dockerfile.maven3.9.9-eclipse-temurin17-node20 .
+docker build -t maven-jdk-node:maven3.9.9-eclipse-temurin17-node20 -f dockerfiles/Dockerfile.maven3.9.9-eclipse-temurin17-node20 .
 ```
 
 ## How to Use
@@ -112,7 +114,7 @@ docker run -it <image-name> /bin/bash
 For example:
 
 ```bash
-docker run -it myimage:maven3.9.9-eclipse-temurin17-node20 /bin/bash
+docker run -it maven-jdk-node:maven3.9.9-eclipse-temurin17-node20 /bin/bash
 ```
 
 ### Integrating with CI/CD Pipelines
@@ -122,7 +124,7 @@ You can integrate these Docker images into your CI/CD pipeline by specifying the
 For example, in GitLab CI:
 
 ```yaml
-image: myimage:maven3.9.9-eclipse-temurin17-node20
+image: maven-jdk-node:maven3.9.9-eclipse-temurin17-node20
 ```
 
 ## Customization
