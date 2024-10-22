@@ -34,11 +34,13 @@ Each Dockerfile is tailored for a specific combination of Maven, JDK, and Node.j
 
 The following combinations are provided in this repository:
 
-| Dockerfile Name | Maven Version | JDK Version | Node.js Version |
-|-----------------|---------------|-------------|-----------------|
-| `Dockerfile.maven3.8.7-eclipse-temurin11-node16` | 3.8.7 | 11 | 16 |
-| `Dockerfile.maven3.9.9-eclipse-temurin17-node20` | 3.9.9 | 17 | 20 |
-| `Dockerfile.maven3.6.3-eclipse-temurin8-node14`  | 3.6.3 | 8  | 14 |
+| Dockerfile Name                              | Maven Version | JDK Version | Node.js Version |
+|----------------------------------------------|---------------|-------------|-----------------|
+| `Dockerfile.maven3.6.3-eclipse-temurin8-node14`  | 3.6.3         | 8           | 16              |
+| `Dockerfile.maven3.8.7-eclipse-temurin11-node16` | 3.8.7         | 11          | 16              |
+| `Dockerfile.maven3.8.7-eclipse-temurin11-node18` | 3.8.7         | 11          | 18              |
+| `Dockerfile.maven3.9.9-eclipse-temurin17-node20` | 3.9.9         | 17          | 20              |
+
 
 Each combination is defined in its own Dockerfile, allowing users to choose the appropriate setup for their project.
 
