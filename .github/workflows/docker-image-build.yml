@@ -1,0 +1,51 @@
+name: Docker Image CI/CD
+
+# Run the workflow whenever changes are made to Dockerfiles
+on:
+  push:
+    paths:
+      - 'dockerfiles/**'
+  pull_request:
+    paths:
+      - 'dockerfiles/**'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      # Replace with your DockerHub username
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      # Replace with your DockerHub token (stored as a GitHub secret)
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Docker build environment
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      # Step 3: Log in to DockerHub
+      - name: Log in to DockerHub
+        run: echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
+
+      # Step 4: Build and push Docker images for each Dockerfile in the dockerfiles/ directory
+      - name: Build and push Docker images
+        run: |
+          for dockerfile in $(find ./dockerfiles -name "Dockerfile*"); do
+            # Extract version combination from Dockerfile name (e.g., Dockerfile.maven3.9.9-eclipse-temurin17-node20)
+            version_tag=$(basename "$dockerfile" | sed 's/Dockerfile\.//g')
+          
+            # Build Docker image with Maven, JDK, and Node.js versions
+            docker build -t "${DOCKER_USERNAME}/multi-version-image:${version_tag}" -f "$dockerfile" .
+          
+            # Push Docker image to DockerHub
+            docker push "${DOCKER_USERNAME}/multi-version-image:${version_tag}"
+          done
+
+      # Step 5: Log out from DockerHub
+      - name: Log out from DockerHub
+        run: docker logout
