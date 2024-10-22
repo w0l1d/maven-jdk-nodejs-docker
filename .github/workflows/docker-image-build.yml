@@ -6,12 +6,12 @@ on:
     paths:
       - 'dockerfiles/**'
     branches:
-      - 'main'
+      - 'master'
   pull_request:
     paths:
       - 'dockerfiles/**'
     branches:
-      - 'main'
+      - 'master'
 
 jobs:
   build-and-deploy:
